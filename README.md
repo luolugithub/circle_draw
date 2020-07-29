@@ -2,7 +2,7 @@
 
 - Demo image show
 
-- - Line contact temlate image
+- - Point contact temlate image
 
 <p align='left'>  
   <img src='image/cyqd_point_contact.png' width='800'/>
