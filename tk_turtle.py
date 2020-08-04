@@ -10,14 +10,16 @@ import tkinter as tk
 import turtle
 
 root = tk.Tk()
-
-canvas = turtle.ScrolledCanvas(root)
+canvas = turtle.Canvas(root, width=2000, height=2000)
+# canvas = turtle.ScrolledCanvas(root)
 canvas.pack(side=tk.LEFT)
 
+
 screen = turtle.TurtleScreen(canvas)
-screen.setworldcoordinates(-10, 100, 100, -10)
+
+# screen.setworldcoordinates(0, 0, 2000, 2000)
 
 turtle = turtle.RawTurtle(screen)
-turtle.goto(90, 90)
+turtle.goto(0, 0)
 
 screen.mainloop()

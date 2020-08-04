@@ -6,5 +6,5 @@
 # @Software: PyCharm
 
 import os
-command = 'convert duck.eps output.png'
+command = 'convert duck.eps image/output.png'
 os.system(command)

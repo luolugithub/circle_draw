@@ -13,13 +13,17 @@ import tkinter as tk
 from turtle import Screen, Turtle
 from turtle import TurtleScreen, RawTurtle
 
-turtle.setup(2000, 2000)
+WIDTH = 2000
+HEIGHT = 2000
+diameter = 500
+radius = int(diameter / 2)
+# turtle.screensize(canvwidth=WIDTH, canvheight=HEIGHT, bg=None)
 
-print(turtle.Screen().screensize())
+print(turtle.Screen().screensize(WIDTH, HEIGHT))
 print(turtle.position())
-width, height = turtle.Screen().screensize()
-print("height:", height)
-print("width:", width)
+turtle.Screen().setup(width=WIDTH, height=HEIGHT, startx=0, starty=0)
+# print("height:", height)
+# print("width:", width)
 # yertle = Turtle(shape="turtle", visible=False)
 # yertle.penup()
 
@@ -30,7 +34,8 @@ t.hideturtle()
 TURTLE_SIZE = 1
 
 screen = Screen()
-r = 60
+screen.setup(width=WIDTH, height=HEIGHT, startx=0, starty=0)
+r = radius
 t.goto(TURTLE_SIZE/2 - screen.window_width()/2 - 2*r, screen.window_height()/2 - TURTLE_SIZE/2 - r)
 # t.pendown()
 # t.showturtle()

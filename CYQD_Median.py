@@ -36,6 +36,8 @@ rate_mian_kong = 0
 # counter for point and line of contact
 contact_line_counter = 0
 contact_point_counter = 0
+# contact shifting
+shifting_contact = 20
 
 if __name__ == '__main__':
     # six divided part axis
@@ -68,12 +70,16 @@ if __name__ == '__main__':
             A3_x = int(x + radius * math.cos(4 * math.pi / 6) - distance_contact)
             A3_y = int(y + radius * math.sin(4 * math.pi / 6))
 
-            # cv2.line(img=blank_image, pt1=(A1_x, A1_y - 50), pt2=(A1_x, int(A1_y + 50)), color=(0, 0, 255, 255),
-            #          thickness=4)
-            # cv2.line(img=blank_image, pt1=(A2_x, A2_y - 50), pt2=(A2_x, int(A2_y + 50)), color=(0, 255, 0, 255),
-            #          thickness=4)
-            # cv2.line(img=blank_image, pt1=(A3_x, A3_y - 50), pt2=(A3_x, int(A3_y + 50)), color=(255, 0, 0, 255),
-            #          thickness=4)
+            if distance_contact == point_contact:
+                shifting_contact = 20
+            else:
+                shifting_contact = 75
+            cv2.line(img=blank_image, pt1=(A1_x, A1_y-shifting_contact), pt2=(A1_x, int(A1_y+shifting_contact)), color=(0, 0, 255, 255),
+                     thickness=4)
+            cv2.line(img=blank_image, pt1=(int(A2_x-shifting_contact*math.cos(150*math.pi/180.0)), int(A2_y-shifting_contact*math.sin(150*math.pi/180.0))), pt2=(int(A2_x+shifting_contact*math.cos(150*math.pi/180.0)), int(A2_y+shifting_contact*math.sin(150*math.pi/180.0))), color=(0, 255, 0, 255),
+                     thickness=4)
+            cv2.line(img=blank_image, pt1=(int(A3_x-shifting_contact*math.cos(30*math.pi/180.0)), int(A3_y-shifting_contact*math.sin(30*math.pi/180.0))), pt2=(int(A3_x+shifting_contact*math.cos(30*math.pi/180.0)), int(A3_y+shifting_contact*math.sin(30*math.pi/180.0))), color=(255, 0, 0, 255),
+                     thickness=4)
             # print("A1_x:", A1_x)
             # print("A1_y:", A1_y)
             # print("A2_x:", A2_x)
@@ -82,7 +88,7 @@ if __name__ == '__main__':
             # print("A3_y:", A3_y)
             if (0 < A1_x < WIDTH) and (-radius < A1_y < HEIGHT):
                 # point_type_counter
-                if contact_line_counter < 0:
+                if contact_line_counter < 60:
                     cv2.putText(img=blank_image, text=str(""), org=(A1_x, A1_y), color=(0, 0, 255, 0), thickness=8, fontFace=0, fontScale=1)
                     contact_line_counter = contact_line_counter + 1
                     cv2.putText(img=blank_image, text=str(""), org=(A2_x, A2_y), color=(0, 255, 0, 0), thickness=8, fontFace=0, fontScale=2)
@@ -119,7 +125,7 @@ if __name__ == '__main__':
     rate_mian_kong = (pixel_count - colors[0][1]) / pixel_count
     print("rate_mian_kong:", rate_mian_kong)
 
-    cv2.imwrite('image/c500_weak.png', blank_image)
+    cv2.imwrite('image/c500_strong_contact.png', blank_image)
 
     effective_circle = colors[0][1] / (math.pi * pow(radius, 2))
     print("effective_circle:", effective_circle)

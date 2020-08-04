@@ -10,6 +10,20 @@
   <img src='image/c500_weak.png' width='400'/>
 </p>
 
+- - k500 weak template image
+
+<p align='left'>  
+  <img src='image/c500_weak_contact.png' width='400'/>
+  <img src='image/c500_weak_point.png' width='400'/>
+</p>
+
+- - k500 strong template image
+
+<p align='left'>  
+  <img src='image/c500_strong_contact.png' width='400'/>
+  <img src='image/c500_strong_line.png' width='400'/>
+</p>
+
 - - Point contact template image
 
 <p align='left'>  
