@@ -53,9 +53,9 @@ if __name__ == '__main__':
             # print("column:", column)
             # print("x:", x)
             # print("y:", y)
-            cv2.circle(blank_image, center=(int(round(x, 6)), int(round(y, 6))), radius=radius,
-                       color=(153, 102, 153, 255),
-                       thickness=-1)
+            # cv2.circle(blank_image, center=(int(round(x, 6)), int(round(y, 6))), radius=radius,
+            #            color=(153, 102, 153, 255),
+            #            thickness=-1)
 
             # draw line on six parts of circle
             # https://zhidao.baidu.com/question/1643194553528453740.html
@@ -88,7 +88,7 @@ if __name__ == '__main__':
             # print("A3_y:", A3_y)
             if (0 < A1_x < WIDTH) and (-radius < A1_y < HEIGHT):
                 # point_type_counter
-                if contact_line_counter < 60:
+                if contact_line_counter < 30:
                     cv2.putText(img=blank_image, text=str(""), org=(A1_x, A1_y), color=(0, 0, 255, 0), thickness=8, fontFace=0, fontScale=1)
                     contact_line_counter = contact_line_counter + 1
                     cv2.putText(img=blank_image, text=str(""), org=(A2_x, A2_y), color=(0, 255, 0, 0), thickness=8, fontFace=0, fontScale=2)
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     rate_mian_kong = (pixel_count - colors[0][1]) / pixel_count
     print("rate_mian_kong:", rate_mian_kong)
 
-    cv2.imwrite('image/c500_strong_contact.png', blank_image)
+    cv2.imwrite('image/c500_median_line&point.png', blank_image)
 
     effective_circle = colors[0][1] / (math.pi * pow(radius, 2))
     print("effective_circle:", effective_circle)

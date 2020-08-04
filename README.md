@@ -17,6 +17,13 @@
   <img src='image/c500_weak_point.png' width='400'/>
 </p>
 
+- - k500 median template image
+
+<p align='left'>  
+  <img src='image/c500_median_contact.png' width='400'/>
+  <img src='image/c500_median_line&point.png' width='400'/>
+</p>
+
 - - k500 strong template image
 
 <p align='left'>  
